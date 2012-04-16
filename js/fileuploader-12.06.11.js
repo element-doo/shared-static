@@ -465,7 +465,7 @@ qq.FileUploaderBasic.prototype = {
             i++;
         } while (bytes > 99);
 
-        return Math.max(bytes, 0.1).toFixed(1) + ['kB', 'MB', 'GB', 'TB', 'PB', 'EB'][i];
+        return Math.max(bytes, 0.1).toFixed(1) + ' ' + ['kB', 'MB', 'GB', 'TB', 'PB', 'EB'][i];
     }
 };
 
@@ -596,11 +596,11 @@ qq.extend(qq.FileUploader.prototype, {
 
         var item = this._getItemByFileId(id);
         var size = this._find(item, 'size');
-        size.style.display = 'inline';
+        size.style.display = 'inline-block';
 
         var text;
         if (loaded != total){
-            text = Math.round(loaded / total * 100) + '% from ' + this._formatSize(total);
+            text = Math.round(loaded / total * 100) + '%'; // + this._formatSize(total);
         } else {
             text = this._formatSize(total);
         }
@@ -617,6 +617,7 @@ qq.extend(qq.FileUploader.prototype, {
 
         if (result.success){
             qq.addClass(item, this._classes.success);
+            item.setAttribute('data-file-id', id);
         } else {
             qq.addClass(item, this._classes.fail);
         }
@@ -635,7 +636,7 @@ qq.extend(qq.FileUploader.prototype, {
         var item = this._listElement.firstChild;
 
         // there can't be txt nodes in dynamically created list
-        // and we can  use nextSibling
+        // and we can use nextSibling
         while (item){
             if (item.qqFileId == id) return item;
             item = item.nextSibling;
@@ -855,7 +856,7 @@ qq.UploadButton.prototype = {
 qq.UploadHandlerAbstract = function(o){
     this._options = {
         debug: false,
-        action: '/upload.php',
+        action: '/upload',
         // maximum number of concurrent uploads
         maxConnections: 999,
         onProgress: function(id, fileName, loaded, total){},
@@ -1057,7 +1058,7 @@ qq.extend(qq.UploadHandlerForm.prototype, {
         var doc = iframe.contentDocument ? iframe.contentDocument: iframe.contentWindow.document,
             response;
 
-        this.log("converting iframe's innerHTML to JSON");
+        this.log("converting iframes innerHTML to JSON");
         this.log("innerHTML = " + doc.body.innerHTML);
 
         try {
