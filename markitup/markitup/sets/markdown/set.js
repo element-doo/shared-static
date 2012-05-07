@@ -24,14 +24,14 @@ mySettings = {
     {name:'Bold', key:'B', openWith:'**', closeWith:'**'},
     {name:'Italic', key:'I', openWith:'_', closeWith:'_'},
     {separator:'---------------' },
-    {name:'Centriraj naslov', key:'C', replaceWith:function(markItUp){
+    {name:'Centriraj naslov', className:'center', replaceWith:function(markItUp){
       return '[CENTER]\r\n' + markItUp.selection + '\r\n[/CENTER]\r\n';
     }},
     {separator:'---------------' },
     {name:'Novi red', openWith:'[br]\r\n', className:'pilcrow' },
     {separator:'---------------' },
     {name:'Lista s točkama', openWith:'- ' },
-    {name:'Lista s brojevima', openWith:function(markItUp) {
+    {name:'Numerirana lista', openWith:function(markItUp) {
       return markItUp.line+'. ';
     }},
     {separator:'---------------' },
