@@ -7,6 +7,6 @@
     next: 'Slijedeće',
     prev: 'Prethodno',
     close: 'Zatvori',
-    error: 'Sadržaj nije pronađen.<br/>Molimo, probajte kasnije.'
+    error: 'Sadržaj nije pronađen.<br/>Molimo, pokušajte kasnije.'
   };
 }(jQuery));
