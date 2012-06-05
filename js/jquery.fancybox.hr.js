@@ -4,7 +4,7 @@
  */
 (function($){
   $.fancybox.defaults.texts = {
-    next: 'Slijedeće',
+    next: 'Sljedeće',
     prev: 'Prethodno',
     close: 'Zatvori',
     error: 'Sadržaj nije pronađen.<br/>Molimo, pokušajte kasnije.'
